@@ -1,0 +1,25 @@
+# Android
+*.apk
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+build/
+local.properties
+
+# Gradle
+.gradle/
+/captures/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Android Studio
+.idea/
+*.iml
+.gradle
+captures/
+
