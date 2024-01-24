@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp"
     android:background="#E0F7FA"
+    android:id="@+id/cardViewMovies"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -24,7 +25,7 @@
                 android:id="@+id/header_image"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                app:layout_constraintEnd_toStartOf="tittle"
+                app:layout_constraintEnd_toStartOf="@id/title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
