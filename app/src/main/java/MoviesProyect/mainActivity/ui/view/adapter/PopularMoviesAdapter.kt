@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class PopularMoviesAdapter(private val moviesList: List<Dmovie>) :
+class PopularMoviesAdapter(var moviesList: List<Dmovie>) :
     RecyclerView.Adapter<PopularMoviesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularMoviesViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

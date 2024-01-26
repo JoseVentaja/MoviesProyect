@@ -16,3 +16,7 @@ data class Dmovie(
     val vote_average: Double,
     val vote_count: Int
 )
+
+fun formatReleaseDate(date :String) : String{
+   return date.substring(0,4)
+}
