@@ -73,7 +73,7 @@ class PopularMoviesAdapter(var moviesList: List<Dmovie>) :
                 .into(moviePhoto)
             //ver que contiene overView en la api  binding.headerImage = movie.overview
             if(movie.isFavourite){
-                binding.buttonAddFavourite.setBackgroundResource(R.drawable.ic_favorite_checked)
+                binding.buttonAddFavourite.setBackgroundResource(R.drawable.ic_tick)
             } else {
                 binding.buttonAddFavourite.setBackgroundResource(R.drawable.ic_add)
             }
