@@ -10,12 +10,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.coroutines.launch
 
 class PopularMoviesFragment : Fragment(), PopularMoviesAdapter.OnClickListener {
     private lateinit var binding: FragmentPopularMoviesBinding
@@ -35,7 +33,6 @@ class PopularMoviesFragment : Fragment(), PopularMoviesAdapter.OnClickListener {
         popularMovieListViewModel.getPopularMoviesList()
     }
     private fun configView() {
-
         initRecyclerView()
         setUpObservers()
         configListeners()
@@ -52,6 +49,26 @@ class PopularMoviesFragment : Fragment(), PopularMoviesAdapter.OnClickListener {
                // popularMovieListViewModel.getPopularMoviesList()
             binding.swipeRefreshLayout.isRefreshing = false
         }
+       configSearchViewListener()
+    }
+
+    private fun configSearchViewListener() {
+        binding.searchViewMovies.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(searchText: String?): Boolean {
+                popularMovieListViewModel.moviesList.value?.let { movieList ->
+                    val filteredList = movieList.filter { movie ->
+                        movie.original_title.contains(searchText.orEmpty(), ignoreCase = true)
+
+                    }
+                    moviesAdapter.updateList(filteredList)
+                }
+                return true
+            }
+        })
     }
 
 

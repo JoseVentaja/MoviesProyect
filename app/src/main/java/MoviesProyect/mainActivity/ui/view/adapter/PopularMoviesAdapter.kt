@@ -44,6 +44,11 @@ class PopularMoviesAdapter(var moviesList: List<Dmovie>) :
         this.listener = listener
     }
 
+    fun updateList(filteredMovieList: List<Dmovie>) {
+        moviesList = filteredMovieList
+        notifyDataSetChanged()
+    }
+
     inner class PopularMoviesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val binding = CardDataMovieBinding.bind(view)
