@@ -4,6 +4,7 @@ import moviesProyect.mainActivity.databinding.MovieDetailFragmentBinding
 import moviesProyect.mainActivity.ui.viewModel.MovieListViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ class MovieDetailFragment : Fragment() {
     ): View {
         binding = MovieDetailFragmentBinding.inflate(inflater, container, false)
         configView()
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -57,6 +59,16 @@ class MovieDetailFragment : Fragment() {
             currentMovie.isFavourite = !currentMovie.isFavourite
             movieListViewModel.addOrRemoveToFavouriteFilms(currentMovie)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                requireActivity().supportFragmentManager.popBackStack()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 

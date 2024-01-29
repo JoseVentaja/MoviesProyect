@@ -7,6 +7,7 @@ import moviesProyect.mainActivity.ui.view.adapter.PopularMoviesAdapter
 import moviesProyect.mainActivity.ui.viewModel.MovieListViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -26,6 +27,7 @@ class FavouriteMoviesFragment : Fragment(), PopularMoviesAdapter.OnClickListener
         binding = FavouriteListFragmentBinding.inflate(inflater, container, false)
         initRecyclerView()
         setUpObservers()
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -56,5 +58,14 @@ class FavouriteMoviesFragment : Fragment(), PopularMoviesAdapter.OnClickListener
         fragmentTransaction.replace(R.id.containerFragment, MovieDetailFragment())
         fragmentTransaction.addToBackStack("replacement")
         fragmentTransaction.commit()
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                requireActivity().supportFragmentManager.popBackStack()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

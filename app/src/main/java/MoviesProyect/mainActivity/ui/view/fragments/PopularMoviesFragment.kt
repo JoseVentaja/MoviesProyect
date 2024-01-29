@@ -47,7 +47,7 @@ class PopularMoviesFragment : Fragment(), PopularMoviesAdapter.OnClickListener {
             fragmentTransaction.commit()
         }
         binding.swipeRefreshLayout.setOnRefreshListener {
-               // popularMovieListViewModel.getPopularMoviesList()
+            popularMovieListViewModel.getPopularMoviesList()
             binding.swipeRefreshLayout.isRefreshing = false
         }
        configSearchViewListener()
