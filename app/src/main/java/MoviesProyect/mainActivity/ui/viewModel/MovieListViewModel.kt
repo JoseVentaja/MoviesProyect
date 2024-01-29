@@ -36,7 +36,7 @@ class MovieListViewModel : ViewModel() {
         favouriteMoviesList.value?.let { return it } ?: return emptyList()
     }
 
-    fun addToFavouriteFilms(movie: Dmovie) {
+    fun addOrRemoveToFavouriteFilms(movie: Dmovie) {
         updatePopularList(movie)
         if(!movie.isFavourite){
             removeFromFavouriteList(movie)

@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -85,6 +86,8 @@ class PopularMoviesFragment : Fragment(), PopularMoviesAdapter.OnClickListener {
     private fun initRecyclerView() {
         val manager = LinearLayoutManager(context)
         val decoration = DividerItemDecoration(context, manager.orientation)
+        ContextCompat.getDrawable(requireContext(), R.drawable.divider)
+            ?.let {drawable -> decoration.setDrawable(drawable) }
         binding.recyclerViewPopularMovies.layoutManager = manager
         moviesAdapter = PopularMoviesAdapter(emptyList())
         binding.recyclerViewPopularMovies.adapter = moviesAdapter
@@ -93,7 +96,7 @@ class PopularMoviesFragment : Fragment(), PopularMoviesAdapter.OnClickListener {
     }
 
     override fun addOrRemoveFavourite(movie: Dmovie) {
-        popularMovieListViewModel.addToFavouriteFilms(movie)
+        popularMovieListViewModel.addOrRemoveToFavouriteFilms(movie)
     }
 
     override fun accessToMovieDetail(movie: Dmovie) {

@@ -29,14 +29,15 @@ class MovieDetailFragment : Fragment() {
 
     private fun configView() {
         binding.textDescription.text = movieListViewModel.currentMovie.overview
-        val glideUrl = GlideUrl("${Constants.imageBaseURL}${movieListViewModel.currentMovie.poster_path}") {
-            mapOf(
-                Pair(
-                    "Authorization",
-                    "Authorization ${BuildConfig.API_KEY}"
+        val glideUrl =
+            GlideUrl("${Constants.imageBaseURL}${movieListViewModel.currentMovie.poster_path}") {
+                mapOf(
+                    Pair(
+                        "Authorization",
+                        "Authorization ${BuildConfig.API_KEY}"
+                    )
                 )
-            )
-        }
+            }
 
         Glide.with(binding.actorPhoto.context)
             .load(glideUrl)
@@ -46,6 +47,17 @@ class MovieDetailFragment : Fragment() {
             .load(glideUrl)
             .into(binding.videoMovie)
 
+        configListeners()
+
     }
+
+    private fun configListeners() {
+        binding.buttonAddFavourite.setOnClickListener {
+            val currentMovie = movieListViewModel.currentMovie
+            currentMovie.isFavourite = !currentMovie.isFavourite
+            movieListViewModel.addOrRemoveToFavouriteFilms(currentMovie)
+        }
+    }
+
 
 }

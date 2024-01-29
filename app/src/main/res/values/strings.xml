@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WatchList</string>
     <string name="search_a_film">search a film</string>
+    <string name="addToFavourite">add to favourite</string>
 </resources>
