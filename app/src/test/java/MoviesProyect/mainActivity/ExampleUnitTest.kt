@@ -1,4 +1,4 @@
-package MoviesProyect.mainActivity
+package moviesProyect.mainActivity
 
 import org.junit.Test
 

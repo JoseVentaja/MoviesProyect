@@ -1,6 +1,6 @@
-package MoviesProyect.mainActivity.domain
+package moviesProyect.mainActivity.domain
 
-import MoviesProyect.mainActivity.data.model.RemoteResult
+import moviesProyect.mainActivity.data.model.RemoteResult
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -11,7 +11,7 @@ interface ApiService {
     @GET("discover/movie?include_adult=false&include_video=true&language=es-ES&page=1&sort_by=popularity.desc")
     suspend fun listPopularMovies(
         @Query("api_key") apiKey: String
-    ) :RemoteResult
+    ) : RemoteResult?
     object RetrofitServiceFactoy{
         fun makeRetrofitService(): ApiService {
         return Retrofit.Builder()

@@ -1,4 +1,4 @@
-package MoviesProyect.mainActivity.data.model
+package moviesProyect.mainActivity.data.model
 
 data class Dmovie(
     val adult: Boolean,
@@ -14,7 +14,8 @@ data class Dmovie(
     val title: String,
     val video: Boolean,
     val vote_average: Double,
-    val vote_count: Int
+    val vote_count: Int,
+    var isFavourite: Boolean
 )
 
 fun formatReleaseDate(date :String) : String{

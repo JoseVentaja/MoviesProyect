@@ -16,6 +16,7 @@
 
         <activity
             android:name=".ui.view.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

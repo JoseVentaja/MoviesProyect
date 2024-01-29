@@ -1,4 +1,4 @@
-package MoviesProyect.mainActivity.data.model
+package moviesProyect.mainActivity.data.model
 
 data class RemoteResult(
     val page: Int,

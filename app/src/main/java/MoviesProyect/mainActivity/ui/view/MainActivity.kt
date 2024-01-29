@@ -1,9 +1,9 @@
-package MoviesProyect.mainActivity.ui.view
+package moviesProyect.mainActivity.ui.view
 
-import MoviesProyect.mainActivity.R
-import MoviesProyect.mainActivity.databinding.ActivityMainBinding
-import MoviesProyect.mainActivity.ui.view.fragments.PopularMoviesFragment
-import MoviesProyect.mainActivity.ui.viewModel.MovieListViewModel
+import moviesProyect.mainActivity.R
+import moviesProyect.mainActivity.databinding.ActivityMainBinding
+import moviesProyect.mainActivity.ui.view.fragments.PopularMoviesFragment
+import moviesProyect.mainActivity.ui.viewModel.MovieListViewModel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -19,10 +19,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        var count = supportFragmentManager.backStackEntryCount
+        if(count == 0){
+            super.onBackPressed()
+        } else {
+            supportFragmentManager.popBackStack()
+        }
+    }
     private fun configView() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val fragmentTransaction = supportFragmentManager.beginTransaction()
          fragmentTransaction.replace(R.id.containerFragment, PopularMoviesFragment())
-         fragmentTransaction.commit()
+        fragmentTransaction.addToBackStack("replacement")
+        fragmentTransaction.commit()
         //initRecyclerView()
         //setUpObservers()
         //configListeners()
@@ -51,4 +62,6 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerViewPopularMovies.adapter = moviesAdapter
         binding.recyclerViewPopularMovies.addItemDecoration(decoration)
     }*/
+
+
 }
