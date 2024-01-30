@@ -18,6 +18,3 @@ data class Dmovie(
     var isFavourite: Boolean
 )
 
-fun formatReleaseDate(date :String) : String{
-   return date.substring(0,4)
-}

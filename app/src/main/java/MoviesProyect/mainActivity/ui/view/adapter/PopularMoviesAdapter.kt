@@ -3,7 +3,6 @@ package moviesProyect.mainActivity.ui.view.adapter
 import moviesProyect.mainActivity.BuildConfig
 import moviesProyect.mainActivity.R
 import moviesProyect.mainActivity.data.model.Dmovie
-import moviesProyect.mainActivity.data.model.formatReleaseDate
 import moviesProyect.mainActivity.databinding.CardDataMovieBinding
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import moviesProyect.mainActivity.Constants
+import moviesProyect.mainActivity.utils.DateTimeUtils
 
 class PopularMoviesAdapter(var moviesList: List<Dmovie>) :
     RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder>() {
@@ -55,7 +55,7 @@ class PopularMoviesAdapter(var moviesList: List<Dmovie>) :
         fun render(movie: Dmovie) {
             binding.title.text = movie.title
             binding.rating.text = movie.vote_average.toString()
-            binding.filmYear.text = formatReleaseDate(movie.release_date)
+            binding.filmYear.text = DateTimeUtils.getYearFromDateUsingSimpleDateFormat(movie.release_date)
             binding.duration.text = "1:20h"
             var moviePhoto = binding.headerImage
 

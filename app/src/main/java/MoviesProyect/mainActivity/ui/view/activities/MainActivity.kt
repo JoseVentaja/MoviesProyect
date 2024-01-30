@@ -1,4 +1,4 @@
-package moviesProyect.mainActivity.ui.view
+package moviesProyect.mainActivity.ui.view.activities
 
 import moviesProyect.mainActivity.R
 import moviesProyect.mainActivity.databinding.ActivityMainBinding
