@@ -1,5 +1,6 @@
 package moviesProyect.mainActivity.ui.viewModel
 
+import android.util.Log
 import moviesProyect.mainActivity.data.model.Dmovie
 import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
@@ -22,11 +23,18 @@ class MovieListViewModel : ViewModel() {
 
      fun getPopularMoviesList(): List<Dmovie> {
         viewModelScope.launch(Dispatchers.IO) {
+            try {
             _isLoading.postValue(true)
             val response = service.listPopularMovies("${BuildConfig.API_KEY}")
             withContext(Dispatchers.Main) {
                 _moviesList.value = response?.results
                 _isLoading.postValue(false)
+            }
+                //TODO Aqui podría poner un mensaje más personalizado y controlar el tipo de excepción mostrando un toast. Por ejemplo fallo conexión
+                 //TODO (msg = Revise su conexión a internet e intente refrescar el listado)
+            } catch (e: Exception) {
+                _isLoading.postValue(false)
+                Log.e("getPopularMoviesListError", "Error: ${e.message}", e)
             }
         }
         return _moviesList.value?.let { return it } ?: return emptyList()
